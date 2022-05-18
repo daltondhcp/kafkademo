@@ -25,7 +25,7 @@ az account set --subscription 'Subscription Name'
 az deployment group create --name deployfordemo --resource-group ResourceGroupName --template-file main.bicep --parameters @main-parameters.json
 ```
 
-4. Get detailed information on the vm properties exported to file named `machineDetails.json` with below command (paste directly into Cloud shell or run query in resource graph explorer)
+4. Get detailed information on the vm properties exported to file named `machineDetails.json` with below command (paste directly into Cloud shell, add to a shell script file, or run query in resource graph explorer)
 
 ```bash
 az graph query -q "Resources | where type =~ 'microsoft.compute/virtualmachines'| project vmId = tolower(tostring(id)), vmName = name | join (Resources
