@@ -8,7 +8,10 @@ The deployment location of the virtual machines will be the same as the resource
 Recommended to run in [Cloud Shell](https://shell.azure.com):
 
 1. Clone git Repository and navigate to the 'kafkademo' folder
-`git clone https://github.com/daltondhcp/kafkademo.git`
+
+```bash
+git clone https://github.com/daltondhcp/kafkademo.git
+```
 
 2. Edit 'main-parameters.json' to fit target environment.
 
@@ -22,7 +25,7 @@ az account set --subscription 'Subscription Name'
 az deployment group create --name deployfordemo --resource-group ResourceGroupName --template-file main.bicep --parameters @main-parameters.json
 ```
 
-4. Get detailed information on the vm properties with below command
+4. Get detailed information on the vm properties exported to file named `machineDetails.json` with below command (paste directly into Cloud shell or run query in resource graph explorer)
 
 ```bash
 az graph query -q "Resources | where type =~ 'microsoft.compute/virtualmachines'| project vmId = tolower(tostring(id)), vmName = name | join (Resources
